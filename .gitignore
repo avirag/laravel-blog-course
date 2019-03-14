@@ -5,6 +5,7 @@
 /vendor
 /data
 .vscode/
+.idea/
 .env
 .phpunit.result.cache
 Homestead.json
