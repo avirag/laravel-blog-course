@@ -30,6 +30,9 @@ $ php artisan make:migration alter_posts_add_category_id_column --table=posts
 $ php artisan migrate
 $ php artisan migrate:refresh
 $ php artisan make:seeder CategoriesTableSeeder
+$ php artisan make:model Category
+
+$ php artisan make:provider ComposerServiceProvider
 ```
 ### Debug
 ```
@@ -51,5 +54,17 @@ protected $dates = ['published_at'];
 ```
 Local Scopes
 Accessors
+```
+### Slug
+
+```
+RouteServiceProvider with route binding
+getRouteKeyName() in Model
+```
+### Compose of layout sidebar
+```
+create new service provider, and add to app/Providers
+edit app/config/app.php
+
 ```
 

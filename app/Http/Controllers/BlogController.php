@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use function foo\func;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 
 class BlogController extends Controller
 {
@@ -15,7 +18,22 @@ class BlogController extends Controller
             ->latestFirst()
             ->published()
             ->simplePaginate($this->limit);
+
         return view('blog.index', compact('posts'));
+    }
+
+    public function category(Category $category)
+    {
+        $categoryName = $category->title;
+
+        $posts = $category
+            ->posts()
+            ->with('author')
+            ->latestFirst()
+            ->published()
+            ->simplePaginate($this->limit);
+
+        return view('blog.index', compact('posts', 'categoryName'));
     }
 
     public function show(Post $post)
