@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
+use GrahamCampbell\Markdown\Facades\Markdown;
+
 class Post extends Model
 {
     protected $dates = ['published_at'];
@@ -32,6 +34,16 @@ class Post extends Model
     public function getDateAttribute()
     {
         return is_null($this->published_at) ? "" : $this->published_at->diffForHumans();
+    }
+
+    public function getBodyHtmlAttribute()
+    {
+        return $this->body ? Markdown::convertToHtml(e($this->body)) : null;
+    }
+
+    public function getExcerptHtmlAttribute()
+    {
+        return $this->excerpt ? Markdown::convertToHtml(e($this->excerpt)) : null;
     }
 
     public function scopeLatestFirst($query)
