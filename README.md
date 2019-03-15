@@ -12,4 +12,5 @@ $ php artisan tinker
 >>> $faker->sentences(6)
 >>> q
 php artisan db:seed
+php artisan make:controller BlogController
 ```
