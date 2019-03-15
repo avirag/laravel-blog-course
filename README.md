@@ -13,17 +13,23 @@ $ php artisan tinker
 >>> $faker->sentences(6)
 >>> q
 
-php artisan db:seed
-php artisan make:controller BlogController
+$ php artisan db:seed
+$ php artisan make:controller BlogController
 
-php artisan make:migration alter_posts_add_published_at_column --table=posts
-php artisan migrate
+$ php artisan make:migration alter_posts_add_published_at_column --table=posts
+$ php artisan migrate
 
-php artisan tinker
+$ php artisan tinker
 >>> $date = Carbon\Carbon::now()
 >>> $date = Carbon\Carbon::create(2015, 5, 16)
 >>> $date->addDay()
 >>> $date->addDays(6)
+
+$ php artisan make:migration create_categories_table --create=categories
+$ php artisan make:migration alter_posts_add_category_id_column --table=posts
+$ php artisan migrate
+$ php artisan migrate:refresh
+$ php artisan make:seeder CategoriesTableSeeder
 ```
 ### Debug
 ```
@@ -42,7 +48,7 @@ protected $dates = ['published_at'];
 
 ```
 ### Eloquent
-```$xslt
+```
 Local Scopes
 Accessors
 ```
