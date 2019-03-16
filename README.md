@@ -36,6 +36,9 @@ $ php artisan make:provider ComposerServiceProvider
 
 $ php artisan make:migration alter_users_add_slug_column --table=users
 $ php artisan migrate
+
+$ php artisan make:migration alter_users_add_bio_column --table=users
+$ php artisan migrate
 ```
 ### Debug
 ```
