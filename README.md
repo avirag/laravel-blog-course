@@ -33,6 +33,9 @@ $ php artisan make:seeder CategoriesTableSeeder
 $ php artisan make:model Category
 
 $ php artisan make:provider ComposerServiceProvider
+
+$ php artisan make:migration alter_users_add_slug_column --table=users
+$ php artisan migrate
 ```
 ### Debug
 ```
