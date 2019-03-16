@@ -39,6 +39,9 @@ $ php artisan migrate
 
 $ php artisan make:migration alter_users_add_bio_column --table=users
 $ php artisan migrate
+
+$ php artisan make:migration alter_posts_add_view_count_column --table=posts
+$ php artisan migrate
 ```
 ### Debug
 ```
