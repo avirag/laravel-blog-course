@@ -42,6 +42,8 @@ $ php artisan migrate
 
 $ php artisan make:migration alter_posts_add_view_count_column --table=posts
 $ php artisan migrate
+
+$ php artisan make:auth
 ```
 ### Debug
 ```
