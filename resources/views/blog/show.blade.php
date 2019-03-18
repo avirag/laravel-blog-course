@@ -34,7 +34,7 @@
         <div class="media">
           <div class="media-left">
             <a href="{{ route('author', $author->slug) }}">
-              <img alt="{{ $author->name }}" src="{{ $author->avatar() }}" class="media-object">
+              <img width="90" alt="{{ $author->name }}" src="{{ $author->avatar() }}" class="media-object">
             </a>
           </div>
           <div class="media-body">

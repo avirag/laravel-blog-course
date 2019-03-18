@@ -47,7 +47,7 @@ class User extends Authenticatable
     public function avatar()
     {
         $email = $this->email;
-        $default = "http://chittagongit.com//images/small-user-icon/small-user-icon-25.jpg";
+        $default = "https://www.brightfind.com/images/services/design/icon-design-users.png";
         $size = 80;
 
         return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;

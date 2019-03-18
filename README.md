@@ -46,6 +46,8 @@ $ php artisan migrate
 $ php artisan make:auth
 
 $ php artisan route:list
+
+$ php artisan make:controller Backend/Controller
 ```
 ### Debug
 ```
