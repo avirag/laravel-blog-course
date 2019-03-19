@@ -47,7 +47,8 @@ $ php artisan make:auth
 
 $ php artisan route:list
 
-$ php artisan make:controller Backend/Controller
+$ php artisan make:controller Backend/BackendController
+$ php artisan make:controller Backend/BlogController --resource
 ```
 ### Debug
 ```
