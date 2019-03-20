@@ -51,6 +51,10 @@ $ php artisan make:controller Backend/BackendController
 $ php artisan make:controller Backend/BlogController --resource
 
 $ php artisan make:request PostRequest
+
+$ php artisan tinker
+>>> Config::get('cms.image.directory');
+>>> config('cms.image.directory');
 ```
 ### Debug
 ```
