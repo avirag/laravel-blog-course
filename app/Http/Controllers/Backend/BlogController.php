@@ -26,9 +26,9 @@ class BlogController extends BackendController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
-        dd('create');
+        return view('backend.blog.create', compact('post'));
     }
 
     /**
