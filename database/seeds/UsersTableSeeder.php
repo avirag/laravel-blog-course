@@ -20,9 +20,9 @@ class UsersTableSeeder extends Seeder
         // generate 3 users/authors
         DB::table('users')->insert([
             [
-                'name' => "John Doe",
-                'slug' => 'john-doe',
-                'email' => "johndoe@test.com",
+                'name' => "Anita Virag",
+                'slug' => 'anita-virag',
+                'email' => "anitavirag@test.com",
                 'password' => bcrypt('secret'),
                 'bio' => $faker->text(rand(250, 300))
             ],            [
