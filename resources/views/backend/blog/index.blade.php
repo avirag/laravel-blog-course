@@ -28,6 +28,12 @@
             </div>
           </div>
           <div class="box-body ">
+            @if(session('success'))
+              <div class="alert alert-info">
+                {{ session('success') }}
+              </div>
+            @endif
+
             @if(!$posts->count())
               <div class="alert alert-danger">
                 <strong>No record found</strong>
