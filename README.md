@@ -89,4 +89,7 @@ create new service provider, and add to app/Providers
 edit app/config/app.php
 
 ```
-
+### Html shortcut
+```
+.box>(.box-header.with-border>h3.box-title)+.box-body
+```

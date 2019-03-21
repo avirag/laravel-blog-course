@@ -27,7 +27,7 @@ class PostRequest extends FormRequest
             'title' => 'required',
             'slug' => 'required|unique:posts',
             'body' => 'required',
-            'published_at' => 'date_format:Y-m-d H:i:s',
+            'published_at' => 'date_format:Y-m-d H:i:s|nullable',
             'category_id' => 'required',
             'image' => 'mimes:jpg,jpeg,bmp,png'
         ];
