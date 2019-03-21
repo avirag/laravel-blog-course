@@ -51,7 +51,7 @@ class BlogController extends BackendController
         $data = $this->handleRequest($request);
         $request->user()->posts()->create($data);
 
-        return redirect('backend/blog')->with('success', 'Your post was created successfully!');
+        return redirect('backend/blog')->with('message', 'Your post was created successfully!');
     }
 
     private function handleRequest($request)
@@ -117,7 +117,7 @@ class BlogController extends BackendController
         $data = $this->handleRequest($request);
         $post->update($data);
 
-        return redirect('backend/blog')->with('success', 'Your post was updated successfully!');
+        return redirect('backend/blog')->with('message', 'Your post was updated successfully!');
     }
 
     /**
@@ -128,6 +128,15 @@ class BlogController extends BackendController
      */
     public function destroy($id)
     {
-        //
+        Post::findOrFail($id)->delete();
+        return redirect('backend/blog')->with('trash-message', ['Your post moved to Trash', $id]);
+    }
+
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->findOrFail($id);
+        $post->restore();
+
+        return redirect('backend/blog')->with('message', 'Your post has been moved from the Trash.');
     }
 }

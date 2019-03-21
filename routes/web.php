@@ -20,6 +20,7 @@ Auth::routes();
 
 Route::get('/home', 'Backend\HomeController@index')->name('home');
 
+Route::put('/backend/blog/restore/{blog}', 'Backend\BlogController@restore')->name('backend.blog.restore');
 Route::name('backend.')->group(function() {
     Route::resource('/backend/blog', 'Backend\BlogController');
 });

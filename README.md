@@ -55,6 +55,8 @@ $ php artisan make:request PostRequest
 $ php artisan tinker
 >>> Config::get('cms.image.directory');
 >>> config('cms.image.directory');
+
+$ php artisan make:migration add_soft_deletion_to_posts_table --table=posts
 ```
 ### Debug
 ```
