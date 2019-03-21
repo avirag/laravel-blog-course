@@ -26,7 +26,7 @@
             @if($post->image_url)
               <div class="post-item-image">
                 <a href="{{ route('blog.show', $post->slug) }}">
-                  <img src="{{ $post->image_url }}" alt="">
+                  <img height="420" src="{{ $post->image_url }}" alt="">
                 </a>
               </div>
             @endif
