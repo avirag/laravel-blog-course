@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryUpdateRequest extends FormRequest
+class CategoryDestroyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,8 +13,9 @@ class CategoryUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return intval($this->route('category')) !== config('cms.default_category_id');
     }
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,8 +25,7 @@ class CategoryUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:255|unique:categories,title,' . $this->route('category'),
-            'slug' => 'required|max:255|unique:categories,slug,' . $this->route('category')
+            //
         ];
     }
 }

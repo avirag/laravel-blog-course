@@ -62,6 +62,8 @@ $ php artisan make:controller Backend/CategoriesController --resource
 
 $ php artisan make:request CategoryStoreRequest
 $ php artisan make:request CategoryUpdateRequest
+
+$ php artisan make:request CategoryDestroyRequest
 ```
 ### Debug
 ```

@@ -15,6 +15,10 @@ class CategoriesTableSeeder extends Seeder
 
         DB::table('categories')->insert([
             [
+                'title' => 'Uncategorized',
+                'slug' => 'uncategorized'
+            ],
+            [
                 'title' => 'Web Design',
                 'slug' => 'web-design'
             ],
@@ -37,7 +41,7 @@ class CategoriesTableSeeder extends Seeder
         ]);
 
         for ($post_id = 1; $post_id <= 10; $post_id++) {
-            $category_id = rand(1, 5);
+            $category_id = rand(1, 6);
 
             DB::table('posts')
                 ->where('id', $post_id)
