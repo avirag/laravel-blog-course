@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'slug'
     ];
 
     /**
@@ -57,6 +57,13 @@ class User extends Authenticatable
     public function getBioHtmlAttribute()
     {
         return $this->bio ? Markdown::convertToHtml(e($this->bio)) : null;
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        if(!empty($value)) {
+            $this->attributes['password'] = bcrypt($value);
+        }
     }
 
     public function getRouteKeyName()
