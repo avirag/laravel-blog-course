@@ -57,6 +57,11 @@ $ php artisan tinker
 >>> config('cms.image.directory');
 
 $ php artisan make:migration add_soft_deletion_to_posts_table --table=posts
+
+$ php artisan make:controller Backend/CategoriesController --resource
+
+$ php artisan make:request CategoryStoreRequest
+$ php artisan make:request CategoryUpdateRequest
 ```
 ### Debug
 ```

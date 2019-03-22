@@ -34,7 +34,7 @@
                 {!! Form::label('body') !!}
                 {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
 
-                @if($errors->has('title'))
+                @if($errors->has('body'))
                     <span class="help-block">{{ $errors->first('body') }}</span>
                 @endif
             </div>
