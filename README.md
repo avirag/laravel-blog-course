@@ -64,6 +64,11 @@ $ php artisan make:request CategoryStoreRequest
 $ php artisan make:request CategoryUpdateRequest
 
 $ php artisan make:request CategoryDestroyRequest
+
+$ php artisan laratrust:migration
+$ php artisan migrate
+$ php artisan make:model Role
+$ php artisan make:model Permission
 ```
 ### Debug
 ```
