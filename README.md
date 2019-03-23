@@ -70,6 +70,7 @@ $ php artisan migrate
 $ php artisan make:model Role
 $ php artisan make:model Permission
 $ php artisan make:seeder RolesTableSeeder
+$ php artisan make:seeder PermissionsTableSeeder
 ```
 ### Debug
 ```
