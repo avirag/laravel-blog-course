@@ -69,6 +69,7 @@ $ php artisan laratrust:migration
 $ php artisan migrate
 $ php artisan make:model Role
 $ php artisan make:model Permission
+$ php artisan make:seeder RolesTableSeeder
 ```
 ### Debug
 ```
