@@ -44,7 +44,8 @@ class UsersController extends BackendController
      */
     public function store(UserStoreRequest $request)
     {
-        User::create($request->all());
+        $user = User::create($request->all());
+        $user->attachRole($request->role);
 
         return redirect("/backend/users")->with("message", "New User was created successfully!");
     }
@@ -82,7 +83,11 @@ class UsersController extends BackendController
      */
     public function update(UserUpdateRequest $request, $id)
     {
-        User::findOrFail($id)->update($request->all());
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        $user->detachRole($user->role);
+        $user->attachRole($request->role);
 
         return redirect("/backend/users")->with("message", "User was updated successfully!");
     }
