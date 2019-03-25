@@ -65,6 +65,15 @@
                 @endif
             </div>
 
+            <div class="form-group {{ $errors->has('bio') ? 'has-error' : '' }}">
+                {!! Form::label('bio') !!}
+                {!! Form::textarea('bio', null, ['rows' => 5, 'class' => 'form-control']) !!}
+
+                @if($errors->has('bio'))
+                    <span class="help-block">{{ $errors->first('bio') }}</span>
+                @endif
+            </div>
+
         </div>
 
         <div class="box-footer">
