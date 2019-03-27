@@ -19,6 +19,8 @@ Route::get('/author/{author}', 'BlogController@author')->name('author');
 Auth::routes();
 
 Route::get('/home', 'Backend\HomeController@index')->name('home');
+Route::get('/edit-account', 'Backend\HomeController@edit')->name('account.edit');
+Route::put('/edit-account', 'Backend\HomeController@update')->name('account.update');
 
 Route::put('/backend/blog/restore/{blog}', 'Backend\BlogController@restore')->name('backend.blog.restore');
 Route::delete('/backend/blog/force-destroy/{blog}', 'Backend\BlogController@forceDestroy')->name('backend.blog.force-destroy');

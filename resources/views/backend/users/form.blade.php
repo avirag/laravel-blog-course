@@ -50,7 +50,7 @@
 
             <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
                 {!! Form::label('role') !!}
-                @if($user->exists && $user->id == config('cms.default_user_id'))
+                @if($user->exists && ($user->id == config('cms.default_user_id') || isset($hideRoleDropdown)))
                     {!! Form::hidden('role', $user->roles->first()->id) !!}
                     <p class="form-control-static">{{ $user->roles->first()->display_name }}</p>
                 @else
