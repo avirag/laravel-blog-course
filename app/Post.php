@@ -2,6 +2,7 @@
 
 namespace App;
 
+use function foo\func;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
@@ -130,6 +131,14 @@ class Post extends Model
     {
         if ($term) {
             $query->where(function($q) use ($term) {
+                $q->whereHas('author', function($qa) use ($term) {
+                    $qa->where('name', 'LIKE', "%{$term}%");
+                });
+
+                $q->orWhereHas('category', function($qc) use ($term) {
+                    $qc->where('title', 'LIKE', "%{$term}%");
+                });
+
                 $q->orWhere('title', 'LIKE', "%{$term}%");
                 $q->orWhere('excerpt', 'LIKE', "%{$term}%");
             });
