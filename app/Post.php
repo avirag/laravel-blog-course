@@ -144,9 +144,19 @@ class Post extends Model
         return $query->whereNull("published_at");
     }
 
-    public function scopeFilter($query, $term)
+    public function scopeFilter($query, $filter)
     {
-        if ($term) {
+        if (isset($filter['month']) && $month = $filter['month']) {
+//            $query->whereRaw('month(published_at) = ?', [Carbon::parse($month)->month]);
+            $query->whereMonth('published_at', Carbon::parse($month)->month);
+        }
+
+        if (isset($filter['year']) && $year = $filter['year']) {
+//            $query->whereRaw('year(published_at) = ?', [$year]);
+            $query->whereYear('published_at', $year);
+        }
+
+        if (isset($filter['term']) && $term = $filter['term']) {
             $query->where(function($q) use ($term) {
                 $q->whereHas('author', function($qa) use ($term) {
                     $qa->where('name', 'LIKE', "%{$term}%");
@@ -160,5 +170,14 @@ class Post extends Model
                 $q->orWhere('excerpt', 'LIKE', "%{$term}%");
             });
         }
+    }
+
+    public static function archives()
+    {
+        return static::selectRaw('count(id) as post_count, year(published_at) year, monthname(published_at) month')
+            ->published()
+            ->groupBy('year', 'month')
+            ->orderByRaw('min(published_at) desc')
+            ->get();
     }
 }

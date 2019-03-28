@@ -19,11 +19,11 @@ class PostsTableSeeder extends Seeder
         // generate 3 users/authors
         $posts = [];
         $faker = Factory::create();
-        $date = Carbon::now()->addDays(-5);
+        $date = Carbon::now()->modify('-1 year');
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 36; $i++) {
             $image = "Post_Image_" . rand(1, 5) . '.jpg';
-            $date->addDays(1);
+            $date->addDays(14);
             $createdDate = clone($date);
             $publishedDate = clone($date);
 
@@ -36,7 +36,7 @@ class PostsTableSeeder extends Seeder
                 'image' => rand(0, 1) === 1 ? $image : null,
                 'created_at' => $createdDate,
                 'updated_at' => $createdDate,
-                'published_at' => $i < 5 ? $publishedDate : (rand(0, 1) === 0 ? null : $publishedDate->addDays(3)),
+                'published_at' => $i < 30 ? $publishedDate : (rand(0, 1) === 0 ? null : $publishedDate->addDays(3)),
                 'category_id' => config('cms.default_category_id'),
                 'view_count' => rand(1, 100)
             ];

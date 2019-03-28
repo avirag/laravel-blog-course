@@ -46,7 +46,7 @@
       @endif
 
       <nav>
-        {{ $posts->appends(request()->only(['term']))->links() }}
+        {{ $posts->appends(request()->only(['term', 'month', 'year']))->links() }}
       </nav>
     </div>
 
