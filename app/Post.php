@@ -2,7 +2,6 @@
 
 namespace App;
 
-use function foo\func;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
@@ -25,6 +24,11 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 
     public function setPublishedAtAttribute($value)
@@ -79,6 +83,19 @@ class Post extends Model
     public function getExcerptHtmlAttribute()
     {
         return $this->excerpt ? Markdown::convertToHtml(e($this->excerpt)) : null;
+    }
+
+    public function getTagsHtmlAttribute()
+    {
+        $anchors = [];
+        $index = 1;
+        $count = count($this->tags);
+        foreach ($this->tags as $tag) {
+            $anchors[] = '<a href="' . route('tag', $tag->slug) . '">' . $tag->name . '</a>';
+            $index++;
+        }
+
+        return implode(', ', $anchors);
     }
 
     public function dateFormatted($showTimes = false)

@@ -72,6 +72,15 @@ $ php artisan make:model Permission
 $ php artisan make:seeder RolesTableSeeder
 $ php artisan make:seeder PermissionsTableSeeder
 $ php artisan make:middleware CheckPermissionsMiddleware
+
+$ php artisan make:model Tag -m
+$ php artisan make:seeder TagsTableSeeder
+$ php artisan db:seed --class TagsTableSeeder
+$php artisan tinker
+>>> $post = App\Post::first()
+>>> $php = App\Tag::where('slug', 'php')->first();
+>>> $post->tags()->attach($php);
+>>> $post->fresh()->tags
 ```
 ### Debug
 ```

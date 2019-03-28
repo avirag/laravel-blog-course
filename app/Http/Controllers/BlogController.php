@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\User;
 use App\Category;
+use App\Tag;
 
 class BlogController extends Controller
 {
@@ -12,7 +13,7 @@ class BlogController extends Controller
 
     public function index()
     {
-        $posts = Post::with('author')
+        $posts = Post::with('author', 'tags', 'category')
             ->latestFirst()
             ->published()
             ->filter(request('term'))
@@ -27,12 +28,26 @@ class BlogController extends Controller
 
         $posts = $category
             ->posts()
-            ->with('author')
+            ->with('author', 'tags')
             ->latestFirst()
             ->published()
             ->simplePaginate($this->limit);
 
         return view('blog.index', compact('posts', 'categoryName'));
+    }
+
+    public function tag(Tag $tag)
+    {
+        $tagName = $tag->name;
+
+        $posts = $tag
+            ->posts()
+            ->with('author', 'category')
+            ->latestFirst()
+            ->published()
+            ->simplePaginate($this->limit);
+
+        return view('blog.index', compact('posts', 'tagName'));
     }
 
     public function author(User $author)
@@ -41,7 +56,7 @@ class BlogController extends Controller
 
         $posts = $author
             ->posts()
-            ->with('category')
+            ->with('category', 'tags')
             ->latestFirst()
             ->published()
             ->simplePaginate($this->limit);
