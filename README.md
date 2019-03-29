@@ -83,6 +83,7 @@ $php artisan tinker
 >>> $post->fresh()->tags
 
 $ php artisan make:model Comment -m
+$ php artisan make:seeder CommentsTableSeeder
 ```
 ### Debug
 ```
