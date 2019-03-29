@@ -13,6 +13,7 @@
 
 Route::get('/', 'BlogController@index')->name('blog');
 Route::get('/blog/{post}', 'BlogController@show')->name('blog.show');
+Route::post('/blog/{post}/comments', 'CommentsController@store')->name('blog.comments');
 Route::get('/category/{category}', 'BlogController@category')->name('category');
 Route::get('/author/{author}', 'BlogController@author')->name('author');
 Route::get('/tag/{tag}', 'BlogController@tag')->name('tag');
