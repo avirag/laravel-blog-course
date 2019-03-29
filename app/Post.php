@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 
 use GrahamCampbell\Markdown\Facades\Markdown;
+use App\Comment;
 
 class Post extends Model
 {
@@ -29,6 +30,11 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     public function setPublishedAtAttribute($value)

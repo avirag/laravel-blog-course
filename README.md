@@ -81,6 +81,8 @@ $php artisan tinker
 >>> $php = App\Tag::where('slug', 'php')->first();
 >>> $post->tags()->attach($php);
 >>> $post->fresh()->tags
+
+$ php artisan make:model Comment -m
 ```
 ### Debug
 ```
