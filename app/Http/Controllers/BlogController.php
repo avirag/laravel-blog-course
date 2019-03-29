@@ -73,7 +73,7 @@ class BlogController extends Controller
 
         // # 2
         $post->increment('view_count');
-        $postComments = $post->comments;
+        $postComments = $post->comments()->simplePaginate(3);
 
         return view('blog.show', compact('post', 'postComments'));
     }

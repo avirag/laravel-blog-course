@@ -20,7 +20,7 @@
         </ul>
 
         <nav>
-            {{--{!! $postComments->links() !!}--}}
+            {!! $postComments->links() !!}
         </nav>
     </div>
 
