@@ -48,6 +48,28 @@ class Post extends Model
         $this->comments()->create($data);
     }
 
+    public function createTags($tagString)
+    {
+        $tags = explode(",", $tagString);
+        $tagIds = [];
+
+        foreach ($tags as $tag)
+        {
+            $newTag = Tag::firstOrCreate(
+                ['slug' => \Str::slug($tag)], ['name' => ucwords(trim($tag))]
+            );
+            $newTag->save();
+
+            $tagIds[] = $newTag->id;
+        }
+
+        $this->tags()->detach();
+        $this->tags()->attach($tagIds);
+
+        // or
+        // $this->tags()->sync($tagIds);
+    }
+
     public function setPublishedAtAttribute($value)
     {
         $this->attributes['published_at'] = $value ?: null;

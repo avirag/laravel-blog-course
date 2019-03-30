@@ -1,5 +1,23 @@
+@section('style')
+    <link rel="stylesheet" href="/backend/plugins/tag-editor/jquery.tag-editor.css">
+@endsection
+
 @section('script')
+    <script src="/backend/plugins/tag-editor/jquery.caret.min.js"></script>
+    <script src="/backend/plugins/tag-editor/jquery.tag-editor.min.js"></script>
+
     <script type="text/javascript">
+
+        var options = {};
+
+        @if($post->exists)
+            options = {
+            initialTags: {!! json_encode($post->tags->pluck('name')) !!},
+        };
+        @endif
+
+        $('input[name=post_tags]').tagEditor(options);
+
         $('#title').on('blur', function () {
             var theTitle = this.value.toLowerCase().trim();
             var slugInput = $('#slug');
