@@ -49,7 +49,10 @@
         "psr-4": {
             "Tests\\": "tests/"
         },
-        "files": ["app/Helpers/permissions.php"]
+        "files": [
+            "app/Helpers/permissions.php",
+            "app/Helpers/date.php"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
