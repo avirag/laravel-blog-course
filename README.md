@@ -85,6 +85,7 @@ $php artisan tinker
 $ php artisan make:model Comment -m
 $ php artisan make:seeder CommentsTableSeeder
 $ php artisan make:controller CommentsController
+$ php artisan make:request CommentStoreRequest
 ```
 ### Debug
 ```
