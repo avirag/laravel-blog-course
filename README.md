@@ -124,3 +124,40 @@ edit app/config/app.php
 ```
 .box>(.box-header.with-border>h3.box-title)+.box-body
 ```
+### Heroku
+```
+$ heroku login
+$ heroku create
+$ git remote -v
+$ git push heroku master
+$ heroku run bash
+>>> exit
+
+// Forbidden
+$ echo "web: vendor/bin/heroku-php-apache2 public/" > Procfile
+$ git add .
+$ git commit -m "create Procfile"
+$ git push heroku master
+
+// Something went wrong...
+$ vim .env
+
+$ heroku config:set APP_ENV=production
+$ heroku config:set APP_KEY=theKey
+$ heroku config:set APP_DEBUG=true
+$ heroku config:set APP_URL=herokuUrl
+
+// Add-ons: Heroku Postgres
+// Heroku: Settings config vars
+DB_CONNECTION, DB_HOST, DB_DATABASE, DB_USER, DB_PASSWORD, DB_PORT etc.
+
+$ heroku run php artisan migrate --seed
+
+// GD library extension not available
+$ heroku run bash
+>>> composer require "ext-gd:*"
+>>> exit
+$ git add .
+$ git commit -m "ext-gd added"
+$ git push heroku master
+```
